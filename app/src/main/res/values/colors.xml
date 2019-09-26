@@ -8,4 +8,6 @@
     <color name="stratos">#001849</color>
     <color name="yellow_green">#90c237</color>
     <color name="ghost_white">#f8faff</color>
+    <color name="transparent_black">#b0000000</color>
+    <color name="semi_transparent_white">#b0ffffff</color>
 </resources>

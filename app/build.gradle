@@ -31,6 +31,11 @@ android {
     }
 }
 
+// FAQ: It's for @Parcelize annotation and LayoutContainer interface.
+androidExtensions {
+    experimental = true
+}
+
 dependencies {
     implementation appDependencies['implementation']
     kapt appDependencies['kapt']

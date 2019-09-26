@@ -5,12 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import me.scraplesh.module.R
 
 class MoviesFragment : Fragment() {
+  private lateinit var mviView: MoviesView
+  private lateinit var bindings: MoviesBindings
+
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    lifecycle.addObserver(mviView)
+    bindings.setup(mviView)
+  }
+
   override fun onCreateView(
     inflater: LayoutInflater,
     container: ViewGroup?,
     savedInstanceState: Bundle?
-  ): View? = inflater.inflate(R.layout.fragment_movies, container, false)
+  ): View? = mviView.getView(inflater, container)
 }

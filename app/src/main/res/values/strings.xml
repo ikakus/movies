@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Module</string>
+    <string name="movies">Movies</string>
+    <string name="nothing_found">Nothing found</string>
+    <string name="retry">Retry</string>
+    <string name="error_downloading_movies">Error downloading movies</string>
+    <string name="error_loading_movie_info">Error loading movie info</string>
+    <string name="year">Year</string>
+    <string name="rated">Rated</string>
+    <string name="runtime">Runtime</string>
+    <string name="released">Released</string>
+    <string name="genre">Genre</string>
+    <string name="director">Director</string>
+    <string name="language">Language</string>
+    <string name="country">Country</string>
 </resources>
