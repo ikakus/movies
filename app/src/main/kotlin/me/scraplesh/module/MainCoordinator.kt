@@ -7,6 +7,7 @@ import ru.terrakok.cicerone.Router
 class MainCoordinator(private val router: Router) : Consumer<MainCoordinator.NavigationEvent> {
   sealed class NavigationEvent {
     object ApplicationStarted : NavigationEvent()
+    object ExitMovieRequested : NavigationEvent()
     class MovieSelected(val movie: BriefMovieEntity) : NavigationEvent()
   }
 
@@ -14,6 +15,7 @@ class MainCoordinator(private val router: Router) : Consumer<MainCoordinator.Nav
     when (event) {
       NavigationEvent.ApplicationStarted -> router.newRootScreen(ModuleScreen.MoviesScreen)
       is NavigationEvent.MovieSelected -> router.navigateTo(ModuleScreen.MovieScreen(event.movie))
+      NavigationEvent.ExitMovieRequested -> router.exit()
     }
   }
 

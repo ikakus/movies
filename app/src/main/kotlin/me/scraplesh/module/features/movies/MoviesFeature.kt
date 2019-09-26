@@ -14,15 +14,14 @@ import me.scraplesh.module.features.movies.MoviesFeature.News
 import me.scraplesh.module.domain.entities.BriefMovieEntity
 import me.scraplesh.module.domain.usecases.SearchMoviesUseCase
 
-class MoviesFeature(
-  initialState: State,
-  searchMoviesUseCase: SearchMoviesUseCase
-) : ActorReducerFeature<Wish, Effect, State, News>(
-  initialState = initialState,
-  bootstrapper = MoviesBootstrapper(),
-  actor = MoviesActor(searchMoviesUseCase),
-  reducer = MoviesReducer()
-) {
+class MoviesFeature(initialState: State, searchMoviesUseCase: SearchMoviesUseCase) :
+  ActorReducerFeature<Wish, Effect, State, News>(
+    initialState = initialState,
+    bootstrapper = MoviesBootstrapper(),
+    actor = MoviesActor(searchMoviesUseCase),
+    reducer = MoviesReducer(),
+    newsPublisher = MoviesNewsPublisher()
+  ) {
 
   data class State(
     val defaultQuery: String,

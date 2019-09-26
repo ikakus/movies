@@ -2,9 +2,7 @@ package me.scraplesh.module.data.entities
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
-import me.scraplesh.module.domain.common.ImdbType
 import me.scraplesh.module.domain.entities.MovieEntity
-import java.util.*
 
 /*
 {
@@ -51,11 +49,10 @@ import java.util.*
 @JsonClass(generateAdapter = true)
 data class MovieData(
   @Json(name = TITLE) val title: String,
-  @Json(name = YEAR) val year: Int,
+  @Json(name = YEAR) val year: String,
   @Json(name = IMDB_ID) val imdbId: String,
-  @Json(name = TYPE) val type: ImdbType,
   @Json(name = RATED) val rated: String,
-  @Json(name = RELEASED) val released: Date,
+  @Json(name = RELEASED) val released: String,
   @Json(name = RUNTIME) val runtime: String,
   @Json(name = GENRE) val genre: String,
   @Json(name = DIRECTOR) val director: String,
@@ -72,7 +69,6 @@ data class MovieData(
       title = title,
       year = year,
       imdbId = imdbId,
-      type = type,
       rated = rated,
       released = released,
       runtime = runtime,
@@ -98,7 +94,6 @@ data class MovieData(
     const val COUNTRY = "Country"
     const val POSTER = "Poster"
     const val IMDB_ID = "imdbID"
-    const val TYPE = "Type"
     const val IMDB_RATING = "imdbRating"
   }
 

@@ -1,15 +1,11 @@
 package me.scraplesh.module.domain.entities
 
-import me.scraplesh.module.domain.common.ImdbType
-import java.util.*
-
 data class MovieEntity(
   val title: String,
-  val year: Int,
+  val year: String,
   val imdbId: String,
-  val type: ImdbType,
   val rated: String,
-  val released: Date,
+  val released: String,
   val runtime: String,
   val genre: String,
   val director: String,

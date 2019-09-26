@@ -2,7 +2,6 @@ package me.scraplesh.module.data.entities
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
-import me.scraplesh.module.domain.common.ImdbType
 import me.scraplesh.module.domain.entities.BriefMovieEntity
 
 /*
@@ -19,7 +18,6 @@ data class BriefMovieData(
   @Json(name = TITLE) val title: String,
   @Json(name = YEAR) val year: String,
   @Json(name = IMDB_ID) val imdbId: String,
-  @Json(name = TYPE) val type: ImdbType,
   @Json(name = POSTER) val posterUrl: String
 ) : MappingData<BriefMovieEntity> {
 
@@ -28,7 +26,6 @@ data class BriefMovieData(
       title,
       year,
       imdbId,
-      type,
       posterUrl
     )
 
@@ -36,7 +33,6 @@ data class BriefMovieData(
     const val TITLE = "Title"
     const val YEAR = "Year"
     const val IMDB_ID = "imdbID"
-    const val TYPE = "Type"
     const val POSTER = "Poster"
   }
 }
