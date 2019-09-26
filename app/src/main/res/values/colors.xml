@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">@color/astronaut</color>
+    <color name="colorPrimaryDark">@color/stratos</color>
+    <color name="colorAccent">@color/yellow_green</color>
+
+    <color name="astronaut">#263d75</color>
+    <color name="stratos">#001849</color>
+    <color name="yellow_green">#90c237</color>
+    <color name="ghost_white">#f8faff</color>
 </resources>

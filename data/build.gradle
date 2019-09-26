@@ -1,20 +1,16 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdk
+
     defaultConfig {
-        applicationId rootProject.ext.application.applicationId
         minSdkVersion rootProject.ext.android.minSdk
         targetSdkVersion rootProject.ext.android.targetSdk
+
         versionCode rootProject.ext.application.versionCode
         versionName rootProject.ext.application.versionName
-    }
-
-    compileOptions {
-        sourceCompatibility rootProject.ext.compiler.java
-        targetCompatibility rootProject.ext.compiler.java
     }
 
     sourceSets {
@@ -23,5 +19,6 @@ android {
 }
 
 dependencies {
-    implementation appDependencies
+    implementation dataDependencies['implementation']
+    kapt dataDependencies['kapt']
 }
