@@ -13,6 +13,12 @@ android {
         versionName rootProject.ext.application.versionName
     }
 
+    buildTypes {
+        debug {
+            buildConfigField 'String', 'imdbApiKey', "\"$imdbApiKey\""
+        }
+    }
+
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }

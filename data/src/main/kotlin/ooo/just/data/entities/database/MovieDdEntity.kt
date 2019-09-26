@@ -3,14 +3,12 @@ package ooo.just.data.entities.database
 import androidx.room.*
 import io.reactivex.Single
 import ooo.just.data.entities.MappingData
-import ooo.just.domain.entities.MovieEntity
+import ooo.just.domain.entities.BriefMovieEntity
 
 @Entity(tableName = "movies")
 data class MovieDbEntity(
-    @PrimaryKey(autoGenerate = true) var id: Int = 0
-) : MappingData<MovieEntity> {
-    override val entity: MovieEntity get() = MovieEntity()
-}
+    @PrimaryKey var id: String
+)
 
 @Dao
 interface MoviesDao {

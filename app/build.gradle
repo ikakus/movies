@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdk
@@ -17,11 +18,20 @@ android {
         targetCompatibility rootProject.ext.compiler.java
     }
 
+    buildTypes {
+        debug {
+            applicationIdSuffix ".debug"
+
+            buildConfigField 'String', 'imdbApiUrl', "\"$imdbApiUrl\""
+        }
+    }
+
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
 }
 
 dependencies {
-    implementation appDependencies
+    implementation appDependencies['implementation']
+    kapt appDependencies['kapt']
 }

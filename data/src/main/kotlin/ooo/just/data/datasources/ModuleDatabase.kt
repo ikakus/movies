@@ -7,11 +7,11 @@ import ooo.just.data.Converters
 import ooo.just.data.entities.database.MovieDbEntity
 import ooo.just.data.entities.database.MoviesDao
 
-@Database(
-    entities = [MovieDbEntity::class],
-    version = 1
-)
+//@Database(
+//    entities = [MovieDbEntity::class],
+//    version = 1
+//)
 @TypeConverters(Converters::class)
-abstract class ModulDatabase : RoomDatabase() {
+abstract class ModuleDatabase : RoomDatabase() {
   abstract fun movieDao(): MoviesDao
 }

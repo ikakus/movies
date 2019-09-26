@@ -18,25 +18,34 @@ ext {
     ]
 
     versions = [
-            appcompat         : '1.1.0-alpha01',
-            cicerone          : '5.0.0',
-            constraintlayout  : '1.1.3',
-            mvicore           : '1.2.2',
-            okhttp            : '3.14.1',
-            retrofit          : '2.5.0',
-            room              : '2.1.0-alpha07',
-            recyclerview      : '1.0.0',
-            rxAndroid         : '2.1.0',
-            rxBinding         : '3.0.0-alpha2',
-            rxJava            : '2.2.6',
-            rxKotlin          : '2.3.0',
+            appcompat       : '1.1.0-alpha01',
+            cicerone        : '5.0.0',
+            constraintlayout: '1.1.3',
+            dagger          : '2.24',
+            mvicore         : '1.2.2',
+            moshi           : '1.8.0',
+            okhttp          : '3.14.1',
+            retrofit        : '2.5.0',
+            room            : '2.1.0-alpha07',
+            recyclerview    : '1.0.0',
+            rxAndroid       : '2.1.0',
+            rxBinding       : '3.0.0-alpha2',
+            rxJava          : '2.2.6',
+            rxKotlin        : '2.3.0',
     ]
 
     dependencies = [
             appcompatV7               : "androidx.appcompat:appcompat:${versions.appcompat}",
             cicerone                  : "ru.terrakok.cicerone:cicerone:${versions.cicerone}",
             constraintlayout          : "androidx.constraintlayout:constraintlayout:${versions.constraintlayout}",
+            dagger                    : "com.google.dagger:dagger:${versions.dagger}",
+            daggerCompiler            : "com.google.dagger:dagger-compiler:${versions.dagger}",
+            daggerAndroid             : "com.google.dagger:dagger-android:${versions.dagger}",
+            daggerAndroidSupport      : "com.google.dagger:dagger-android-support:${versions.dagger}",
+            daggerAndroidProcessor    : "com.google.dagger:dagger-android-processor:${versions.dagger}",
             kotlinStdlib              : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${compiler.kotlin}",
+            moshi                     : "com.squareup.moshi:moshi:${versions.moshi}",
+            moshiCodegen              : "com.squareup.moshi:moshi-kotlin-codegen:${versions.moshi}",
             mvicore                   : "com.github.badoo.mvicore:mvicore:${versions.mvicore}",
             mvicoreAndroid            : "com.github.badoo.mvicore:mvicore-android:${versions.mvicore}",
             okhttp                    : "com.squareup.okhttp3:okhttp:${versions.okhttp}",
@@ -57,38 +66,50 @@ ext {
     domainDependencies = [
             dependencies.kotlinStdlib,
             dependencies.rxJava,
+            dependencies.moshi,
     ]
 
     dataDependencies = [
             'implementation': [
                     project(':domain'),
                     dependencies.kotlinStdlib,
-                    dependencies.rxJava,
-                    dependencies.roomRuntime,
-                    dependencies.roomRxJava2,
+                    dependencies.moshi,
                     dependencies.okhttp,
                     dependencies.retrofit,
+                    dependencies.roomRuntime,
+                    dependencies.roomRxJava2,
+                    dependencies.rxJava,
             ],
             'kapt'          : [
-                    dependencies.roomCompiler
+                    dependencies.moshiCodegen,
+                    dependencies.roomCompiler,
             ]
     ]
 
     appDependencies = [
-            project(':domain'),
-            project(':data'),
+            'implementation': [
+                    project(':domain'),
+                    project(':data'),
 
-            dependencies.appcompatV7,
-            dependencies.cicerone,
-            dependencies.constraintlayout,
-            dependencies.kotlinStdlib,
-            dependencies.mvicore,
-            dependencies.mvicoreAndroid,
-            dependencies.rxAndroid,
-            dependencies.rxbindingAppcompatV7Kotlin,
-            dependencies.rxbindingDesign,
-            dependencies.rxJava,
-            dependencies.rxKotlin,
+                    dependencies.appcompatV7,
+                    dependencies.cicerone,
+                    dependencies.constraintlayout,
+                    dependencies.dagger,
+                    dependencies.daggerAndroid,
+                    dependencies.daggerAndroidSupport,
+                    dependencies.kotlinStdlib,
+                    dependencies.mvicore,
+                    dependencies.mvicoreAndroid,
+                    dependencies.rxAndroid,
+                    dependencies.rxbindingAppcompatV7Kotlin,
+                    dependencies.rxbindingDesign,
+                    dependencies.rxJava,
+                    dependencies.rxKotlin,
+            ],
+            'kapt'          : [
+                    dependencies.daggerCompiler,
+                    dependencies.daggerAndroidProcessor,
+            ]
     ]
 
 }
