@@ -1,5 +1,6 @@
 package me.scraplesh.module.ui
 
+import me.scraplesh.module.BuildConfig
 import me.scraplesh.module.ModuleScreen
 import me.scraplesh.module.features.movie.MovieFeature
 import me.scraplesh.module.features.movies.MoviesFeature
@@ -13,9 +14,9 @@ class MainCoordinator(private val router: Router) : Coordinator {
       MainActivity.ApplicationStarted -> router.newRootScreen(
         ModuleScreen.MoviesScreen
       )
-      is MoviesFeature.News.MovieSelected -> router.navigateTo(
-        ModuleScreen.MovieScreen(event.movie)
-      )
+      is MoviesFeature.News.MovieSelected -> {
+        if (BuildConfig.movieEnabled) router.navigateTo(ModuleScreen.MovieScreen(event.movie))
+      }
       MovieFeature.News.ExitRequested -> router.exit()
     }
   }
