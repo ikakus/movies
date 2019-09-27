@@ -3,4 +3,5 @@ rootProject.name='Module'
 include ':app',
         ':domain',
         ':data',
-        ':core'
+        ':core',
+        ':navigation'
