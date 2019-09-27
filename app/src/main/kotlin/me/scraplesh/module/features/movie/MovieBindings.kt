@@ -4,10 +4,9 @@ import androidx.lifecycle.LifecycleOwner
 import com.badoo.mvicore.android.AndroidBindings
 import com.badoo.mvicore.binder.using
 import me.scraplesh.module.MainCoordinator
-import me.scraplesh.module.MainCoordinator.MainEvent
-import me.scraplesh.module.features.movie.MovieFeature.News
 import me.scraplesh.module.features.movie.MovieFeature.Wish
 import me.scraplesh.module.features.movie.MovieView.UiEvent
+import me.scraplesh.module.navigation.NavigationEvent
 
 class MovieBindings(
   lifecycleOwner: LifecycleOwner,
@@ -18,9 +17,7 @@ class MovieBindings(
 
   init {
     binder.bind(feature.news to coordinator using { news ->
-      when (news) {
-        is News.ExitRequested -> MainEvent.ExitMovieRequested
-      }
+      (news as? NavigationEvent)
     })
   }
 

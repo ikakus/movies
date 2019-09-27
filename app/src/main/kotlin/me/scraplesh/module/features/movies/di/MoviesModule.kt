@@ -8,9 +8,13 @@ import me.scraplesh.module.domain.repo.MoviesRepository
 import me.scraplesh.module.domain.usecases.SearchMoviesUseCase
 import me.scraplesh.module.features.movies.MoviesBindings
 import me.scraplesh.module.features.movies.MoviesFeature
+import me.scraplesh.module.navigation.Coordinator
 
 @Module
-class MoviesModule(private val lifecycleOwner: LifecycleOwner) {
+class MoviesModule(
+  private val lifecycleOwner: LifecycleOwner,
+  private val coordinator: Coordinator
+) {
   @Provides
   @MoviesScope
   fun feature(moviesRepository: MoviesRepository): MoviesFeature = MoviesFeature(
@@ -20,5 +24,9 @@ class MoviesModule(private val lifecycleOwner: LifecycleOwner) {
 
   @Provides
   @MoviesScope
-  fun bindings(feature: MoviesFeature): MoviesBindings = MoviesBindings(lifecycleOwner, feature)
+  fun bindings(feature: MoviesFeature): MoviesBindings = MoviesBindings(
+    lifecycleOwner,
+    feature,
+    coordinator
+  )
 }

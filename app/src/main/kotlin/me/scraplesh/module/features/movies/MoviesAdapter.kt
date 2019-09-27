@@ -33,6 +33,8 @@ class MoviesAdapter @Inject constructor() :
   override fun onBindViewHolder(holder: ViewHolder, position: Int) {
     movies[position].let { movie ->
       holder.apply {
+        itemView.setOnClickListener { selectedMovies.accept(movie) }
+
         Picasso.get()
           .load(movie.posterUrl)
           .into(imageview_itemmovies)

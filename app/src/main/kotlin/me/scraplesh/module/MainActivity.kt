@@ -2,21 +2,21 @@ package me.scraplesh.module
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import me.scraplesh.module.MainCoordinator.MainEvent
+import me.scraplesh.module.core.HasCoordinator
 import me.scraplesh.module.di.DaggerMainComponent
-import me.scraplesh.module.di.MainModule
 import me.scraplesh.module.navigation.Coordinator
 import me.scraplesh.module.navigation.DaggerNavigationComponent
 import me.scraplesh.module.navigation.NavigationComponent
+import me.scraplesh.module.navigation.NavigationEvent
 import me.scraplesh.module.navigation.NavigationModule
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.NavigatorHolder
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), HasCoordinator {
   @Inject lateinit var navigatorHolder: NavigatorHolder
   @Inject lateinit var navigator: Navigator
-  @Inject lateinit var coordinator: Coordinator
+  @Inject override lateinit var coordinator: Coordinator
 
   override fun onCreate(savedInstanceState: Bundle?) {
     inject()
@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
 
-    coordinator.accept(MainEvent.ApplicationStarted)
+    coordinator.accept(ApplicationStarted)
   }
 
   override fun onResumeFragments() {
@@ -43,4 +43,6 @@ class MainActivity : AppCompatActivity() {
       .build()
       .inject(this)
   }
+
+  object ApplicationStarted : NavigationEvent
 }
