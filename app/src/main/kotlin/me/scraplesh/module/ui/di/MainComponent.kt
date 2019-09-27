@@ -1,8 +1,8 @@
-package me.scraplesh.module.di
+package me.scraplesh.module.ui.di
 
 import dagger.Component
-import me.scraplesh.module.MainActivity
-import me.scraplesh.module.features.movies.di.MoviesComponent
+import me.scraplesh.module.di.AppComponent
+import me.scraplesh.module.ui.MainActivity
 import me.scraplesh.module.navigation.NavigationComponent
 
 @MainScope

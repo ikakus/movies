@@ -1,6 +1,5 @@
 package me.scraplesh.module.di
 
-import android.content.Context
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.squareup.moshi.Moshi
 import dagger.Module
@@ -14,11 +13,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
 
 @Module
-class AppModule(private val context: Context) {
-  @Singleton
-  @Provides
-  fun context(): Context = context
-
+class AppModule {
   @Singleton
   @Provides
   fun imdbWebApi(): ImdbWebApi = Retrofit.Builder()

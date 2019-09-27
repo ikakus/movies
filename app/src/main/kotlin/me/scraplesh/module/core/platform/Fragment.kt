@@ -1,4 +1,4 @@
-package me.scraplesh.module.common.platform
+package me.scraplesh.module.core.platform
 
 import androidx.fragment.app.Fragment
 

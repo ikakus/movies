@@ -1,5 +1,6 @@
-package me.scraplesh.module
+package me.scraplesh.module.ui
 
+import me.scraplesh.module.ModuleScreen
 import me.scraplesh.module.features.movie.MovieFeature
 import me.scraplesh.module.features.movies.MoviesFeature
 import me.scraplesh.module.navigation.Coordinator
@@ -18,6 +19,5 @@ class MainCoordinator(private val router: Router) : Coordinator {
       MovieFeature.News.ExitRequested -> router.exit()
     }
   }
-
 
 }

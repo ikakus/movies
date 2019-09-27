@@ -1,8 +1,6 @@
-package me.scraplesh.module.features.movies.di
+package me.scraplesh.module.navigation
 
 import android.app.Activity
-import me.scraplesh.module.core.HasCoordinator
-import me.scraplesh.module.navigation.Coordinator
 
 fun provideCoordinator(activity: Activity): Coordinator =
   (activity as? HasCoordinator)?.coordinator

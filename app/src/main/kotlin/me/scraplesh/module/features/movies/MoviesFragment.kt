@@ -5,10 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import me.scraplesh.module.core.provideDomainComponent
+import me.scraplesh.module.core.di.provideDomainComponent
 import me.scraplesh.module.features.movies.di.DaggerMoviesComponent
 import me.scraplesh.module.features.movies.di.MoviesModule
-import me.scraplesh.module.features.movies.di.provideCoordinator
+import me.scraplesh.module.navigation.provideCoordinator
 import javax.inject.Inject
 
 class MoviesFragment : Fragment() {
@@ -31,7 +31,9 @@ class MoviesFragment : Fragment() {
   private fun inject() {
     DaggerMoviesComponent.builder()
       .domainComponent(provideDomainComponent(requireContext()))
-      .moviesModule(MoviesModule(this, provideCoordinator(requireActivity())))
+      .moviesModule(MoviesModule(this,
+        provideCoordinator(requireActivity())
+      ))
       .build()
       .inject(this)
   }

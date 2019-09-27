@@ -13,7 +13,7 @@ import com.squareup.picasso.Picasso
 import io.reactivex.rxkotlin.addTo
 import kotlinx.android.synthetic.main.fragment_movie.view.*
 import me.scraplesh.module.R
-import me.scraplesh.module.common.MviCoreView
+import me.scraplesh.module.core.MviCoreView
 import kotlin.properties.Delegates
 
 class MovieView : MviCoreView<MovieView.UiEvent, MovieView.ViewModel>() {

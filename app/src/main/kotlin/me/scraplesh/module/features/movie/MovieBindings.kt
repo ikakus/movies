@@ -3,7 +3,7 @@ package me.scraplesh.module.features.movie
 import androidx.lifecycle.LifecycleOwner
 import com.badoo.mvicore.android.AndroidBindings
 import com.badoo.mvicore.binder.using
-import me.scraplesh.module.MainCoordinator
+import me.scraplesh.module.ui.MainCoordinator
 import me.scraplesh.module.features.movie.MovieFeature.Wish
 import me.scraplesh.module.features.movie.MovieView.UiEvent
 import me.scraplesh.module.navigation.NavigationEvent

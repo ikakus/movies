@@ -1,4 +1,4 @@
-package me.scraplesh.module.core
+package me.scraplesh.module.core.di
 
 import dagger.Module
 import dagger.Provides

@@ -1,4 +1,4 @@
-package me.scraplesh.module.di
+package me.scraplesh.module.ui.di
 
 import javax.inject.Scope
 

@@ -1,4 +1,4 @@
-package me.scraplesh.module.common
+package me.scraplesh.module.core
 
 import android.view.LayoutInflater
 import android.view.View

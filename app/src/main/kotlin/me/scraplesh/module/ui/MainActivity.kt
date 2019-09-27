@@ -1,14 +1,16 @@
-package me.scraplesh.module
+package me.scraplesh.module.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import me.scraplesh.module.core.HasCoordinator
-import me.scraplesh.module.di.DaggerMainComponent
+import me.scraplesh.module.ModuleApp
+import me.scraplesh.module.R
+import me.scraplesh.module.navigation.HasCoordinator
 import me.scraplesh.module.navigation.Coordinator
 import me.scraplesh.module.navigation.DaggerNavigationComponent
 import me.scraplesh.module.navigation.NavigationComponent
 import me.scraplesh.module.navigation.NavigationEvent
 import me.scraplesh.module.navigation.NavigationModule
+import me.scraplesh.module.ui.di.DaggerMainComponent
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.NavigatorHolder
 import javax.inject.Inject
