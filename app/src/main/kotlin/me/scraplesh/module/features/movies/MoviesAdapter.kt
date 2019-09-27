@@ -13,8 +13,9 @@ import kotlinx.android.synthetic.main.item_movies.*
 import me.scraplesh.module.R
 import me.scraplesh.module.domain.entities.BriefMovieEntity
 import java.util.function.Consumer
+import javax.inject.Inject
 
-class MoviesAdapter :
+class MoviesAdapter @Inject constructor() :
   RecyclerView.Adapter<MoviesAdapter.ViewHolder>(),
   Consumer<List<BriefMovieEntity>>,
   ObservableSource<BriefMovieEntity> {

@@ -23,6 +23,7 @@ android {
             applicationIdSuffix ".debug"
 
             buildConfigField 'String', 'imdbApiUrl', "\"$imdbApiUrl\""
+            buildConfigField 'String', 'defaultQuery', "\"warrior\""
         }
     }
 
