@@ -8,6 +8,7 @@ import me.scraplesh.module.domain.entities.BriefMovieEntity
 data class BriefMovie(
   val title: String,
   val year: String,
+  val type: String,
   val imdbId: String,
   val posterUrl: String
 ) :
@@ -17,11 +18,12 @@ data class BriefMovie(
   constructor(movie: BriefMovieEntity) : this(
     title = movie.title,
     year = movie.year,
+    type = movie.type,
     imdbId = movie.imdbId,
     posterUrl = movie.posterUrl
   )
 
   override val entity: BriefMovieEntity
-    get() = BriefMovieEntity(title, year, imdbId, posterUrl)
+    get() = BriefMovieEntity(title, year, type, imdbId, posterUrl)
 
 }

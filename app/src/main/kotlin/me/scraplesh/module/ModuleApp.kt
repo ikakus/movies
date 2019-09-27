@@ -1,6 +1,7 @@
 package me.scraplesh.module
 
 import android.app.Application
+import com.facebook.stetho.Stetho
 import me.scraplesh.module.core.DaggerDomainComponent
 import me.scraplesh.module.core.DomainComponent
 import me.scraplesh.module.core.DomainModule
@@ -16,4 +17,13 @@ class ModuleApp : Application(), HasDomainComponent {
   override val domainComponent: DomainComponent = DaggerDomainComponent.builder()
     .domainModule(DomainModule(appComponent.imdbWebApi()))
     .build()
+
+  override fun onCreate() {
+    super.onCreate()
+    setupStetho()
+  }
+
+  private fun setupStetho() {
+    if (BuildConfig.DEBUG) Stetho.initializeWithDefaults(this)
+  }
 }

@@ -17,6 +17,7 @@ import me.scraplesh.module.domain.entities.BriefMovieEntity
 data class BriefMovieData(
   @Json(name = TITLE) val title: String,
   @Json(name = YEAR) val year: String,
+  @Json(name = TYPE) val type: String,
   @Json(name = IMDB_ID) val imdbId: String,
   @Json(name = POSTER) val posterUrl: String
 ) : MappingData<BriefMovieEntity> {
@@ -25,6 +26,7 @@ data class BriefMovieData(
     get() = BriefMovieEntity(
       title,
       year,
+      type,
       imdbId,
       posterUrl
     )
@@ -32,6 +34,7 @@ data class BriefMovieData(
   private companion object {
     const val TITLE = "Title"
     const val YEAR = "Year"
+    const val TYPE = "Type"
     const val IMDB_ID = "imdbID"
     const val POSTER = "Poster"
   }
