@@ -16,9 +16,7 @@ class MoviesBindings(
   AndroidBindings<MoviesView>(lifecycleOwner) {
 
   init {
-    binder.bind(feature.news to coordinator using { news ->
-      (news as? NavigationEvent)
-    })
+    binder.bind(feature.news to coordinator using { news -> (news as? NavigationEvent) })
   }
 
   override fun setup(view: MoviesView) {

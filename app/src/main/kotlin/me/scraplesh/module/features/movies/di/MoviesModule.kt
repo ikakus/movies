@@ -6,6 +6,7 @@ import dagger.Provides
 import me.scraplesh.module.BuildConfig
 import me.scraplesh.module.domain.repo.MoviesRepository
 import me.scraplesh.module.domain.usecases.SearchMoviesUseCase
+import me.scraplesh.module.features.movie.di.MovieScope
 import me.scraplesh.module.features.movies.MoviesBindings
 import me.scraplesh.module.features.movies.MoviesFeature
 import me.scraplesh.module.navigation.Coordinator
@@ -16,14 +17,14 @@ class MoviesModule(
   private val coordinator: Coordinator
 ) {
   @Provides
-  @MoviesScope
+  @MovieScope
   fun feature(moviesRepository: MoviesRepository): MoviesFeature = MoviesFeature(
     MoviesFeature.State(defaultQuery = BuildConfig.defaultQuery),
     SearchMoviesUseCase(moviesRepository)
   )
 
   @Provides
-  @MoviesScope
+  @MovieScope
   fun bindings(feature: MoviesFeature): MoviesBindings = MoviesBindings(
     lifecycleOwner,
     feature,

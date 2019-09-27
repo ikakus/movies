@@ -3,22 +3,20 @@ package me.scraplesh.module.features.movie
 import androidx.lifecycle.LifecycleOwner
 import com.badoo.mvicore.android.AndroidBindings
 import com.badoo.mvicore.binder.using
-import me.scraplesh.module.ui.MainCoordinator
 import me.scraplesh.module.features.movie.MovieFeature.Wish
 import me.scraplesh.module.features.movie.MovieView.UiEvent
+import me.scraplesh.module.navigation.Coordinator
 import me.scraplesh.module.navigation.NavigationEvent
 
 class MovieBindings(
   lifecycleOwner: LifecycleOwner,
   private val feature: MovieFeature,
-  coordinator: MainCoordinator
+  coordinator: Coordinator
 ) :
   AndroidBindings<MovieView>(lifecycleOwner) {
 
   init {
-    binder.bind(feature.news to coordinator using { news ->
-      (news as? NavigationEvent)
-    })
+    binder.bind(feature.news to coordinator using { news -> (news as? NavigationEvent) })
   }
 
   override fun setup(view: MovieView) {
