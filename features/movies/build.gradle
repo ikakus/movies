@@ -1,0 +1,36 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdk
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdk
+        targetSdkVersion rootProject.ext.android.targetSdk
+
+        versionCode rootProject.ext.application.versionCode
+        versionName rootProject.ext.application.versionName
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField 'String', 'defaultQuery', "\"warrior\""
+        }
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+}
+
+// FAQ: It's for @Parcelize annotation and LayoutContainer interface.
+androidExtensions {
+    experimental = true
+}
+
+dependencies {
+    implementation moviesDependencies['implementation']
+    kapt moviesDependencies['kapt']
+}

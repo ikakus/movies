@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_movies"
+        style="@style/Toolbar.ModuleToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="3dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="@string/movies"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview_movies"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_movies"
+        tools:listitem="@layout/item_movies"
+        />
+
+    <FrameLayout
+        android:id="@+id/framelayout_movies_loading"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/semi_transparent_white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_movies"
+        tools:visibility="gone"
+        >
+
+        <ProgressBar
+            style="@style/ProgressBar"
+            android:layout_gravity="center"
+            />
+
+    </FrameLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textview_movies_no_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/nothing_found"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_movies"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_movies_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/error_downloading_movies"
+        app:layout_constraintBottom_toTopOf="@id/button_movies_retry"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_movies"
+        app:layout_constraintVertical_chainStyle="packed"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_movies_retry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:padding="16dp"
+        android:paddingStart="36dp"
+        android:paddingEnd="36dp"
+        android:text="@string/retry"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/text_movies_error"
+        app:layout_constraintStart_toStartOf="@id/text_movies_error"
+        app:layout_constraintTop_toBottomOf="@id/text_movies_error"
+        />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group_movies_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="text_movies_error,button_movies_retry"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,7 +10,6 @@ import com.jakewharton.rxbinding3.view.visibility
 import io.reactivex.Observable
 import io.reactivex.rxkotlin.addTo
 import kotlinx.android.synthetic.main.fragment_movies.view.*
-import me.scraplesh.module.R
 import me.scraplesh.module.core.MviCoreView
 import me.scraplesh.module.domain.entities.BriefMovieEntity
 import javax.inject.Inject

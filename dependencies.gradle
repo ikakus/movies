@@ -90,10 +90,11 @@ ext {
 
     appDependencies = [
             'implementation': [
-                    project(':domain'),
-                    project(':data'),
                     project(':core'),
+                    project(':data'),
+                    project(':domain'),
                     project(':navigation'),
+                    project(':features:movies'),
                     dependencies.appcompatV7,
                     dependencies.cicerone,
                     dependencies.constraintlayout,
@@ -105,6 +106,7 @@ ext {
                     dependencies.mvicore,
                     dependencies.mvicoreAndroid,
                     dependencies.picasso,
+                    dependencies.recyclerview,
                     dependencies.retrofit,
                     dependencies.retrofitMoshi,
                     dependencies.retrofitRxJava2,
@@ -124,8 +126,9 @@ ext {
 
     coreDependencies = [
             'implementation': [
-                    project(':domain'),
                     project(':data'),
+                    project(':domain'),
+                    dependencies.appcompatV7,
                     dependencies.dagger,
                     dependencies.daggerAndroid,
                     dependencies.daggerAndroidSupport,
@@ -148,6 +151,34 @@ ext {
                     dependencies.daggerAndroidSupport,
                     dependencies.kotlinStdlib,
                     dependencies.rxJava,
+            ],
+            'kapt'          : [
+                    dependencies.daggerCompiler,
+                    dependencies.daggerAndroidProcessor,
+            ]
+    ]
+
+    moviesDependencies = [
+            'implementation': [
+                    project(':core'),
+                    project(':domain'),
+                    project(':navigation'),
+                    dependencies.constraintlayout,
+                    dependencies.dagger,
+                    dependencies.daggerAndroid,
+                    dependencies.daggerAndroidSupport,
+                    dependencies.lifecycleCommonJava8,
+                    dependencies.kotlinStdlib,
+                    dependencies.mvicore,
+                    dependencies.mvicoreAndroid,
+                    dependencies.picasso,
+                    dependencies.recyclerview,
+                    dependencies.rxAndroid,
+                    dependencies.rxbindingAppcompatV7Kotlin,
+                    dependencies.rxJava,
+                    dependencies.rxKotlin,
+                    dependencies.rxRelay,
+
             ],
             'kapt'          : [
                     dependencies.daggerCompiler,
