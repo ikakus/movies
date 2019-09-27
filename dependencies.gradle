@@ -92,7 +92,7 @@ ext {
             'implementation': [
                     project(':domain'),
                     project(':data'),
-
+                    project(':core'),
                     dependencies.appcompatV7,
                     dependencies.cicerone,
                     dependencies.constraintlayout,
@@ -114,6 +114,24 @@ ext {
                     dependencies.rxKotlin,
                     dependencies.rxRelay,
                     dependencies.stetho,
+            ],
+            'kapt'          : [
+                    dependencies.daggerCompiler,
+                    dependencies.daggerAndroidProcessor,
+            ]
+    ]
+
+    coreDependencies = [
+            'implementation': [
+                    project(':domain'),
+                    project(':data'),
+                    dependencies.dagger,
+                    dependencies.daggerAndroid,
+                    dependencies.daggerAndroidSupport,
+                    dependencies.kotlinStdlib,
+                    dependencies.lifecycleCommonJava8,
+                    dependencies.rxJava,
+                    dependencies.rxRelay,
             ],
             'kapt'          : [
                     dependencies.daggerCompiler,

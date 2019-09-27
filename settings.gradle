@@ -1,2 +1,6 @@
-include ':app', ':domain', ':data'
-rootProject.name='Modul'
+rootProject.name='Module'
+
+include ':app',
+        ':domain',
+        ':data',
+        ':core'
