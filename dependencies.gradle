@@ -12,7 +12,7 @@ ext {
     ]
 
     application = [
-            applicationId: "me.scraplesh.module",
+            applicationId: "me.scraplesh.movies",
             versionCode  : 1,
             versionName  : '0.1'
     ]
