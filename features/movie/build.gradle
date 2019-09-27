@@ -20,6 +20,27 @@ android {
 }
 
 dependencies {
-    implementation movieDependencies['implementation']
-    kapt movieDependencies['kapt']
+    implementation project(':core')
+    implementation project(':domain')
+    implementation project(':navigation')
+
+    implementation rootProject.ext.dependencies.constraintlayout
+    implementation rootProject.ext.dependencies.dagger
+    implementation rootProject.ext.dependencies.daggerAndroid
+    implementation rootProject.ext.dependencies.daggerAndroidSupport
+    implementation rootProject.ext.dependencies.lifecycleCommonJava8
+    implementation rootProject.ext.dependencies.kotlinStdlib
+    implementation rootProject.ext.dependencies.material
+    implementation rootProject.ext.dependencies.mvicore
+    implementation rootProject.ext.dependencies.mvicoreAndroid
+    implementation rootProject.ext.dependencies.picasso
+    implementation rootProject.ext.dependencies.recyclerview
+    implementation rootProject.ext.dependencies.rxAndroid
+    implementation rootProject.ext.dependencies.rxbindingAppcompatV7Kotlin
+    implementation rootProject.ext.dependencies.rxJava
+    implementation rootProject.ext.dependencies.rxKotlin
+    implementation rootProject.ext.dependencies.rxRelay
+
+    kapt rootProject.ext.dependencies.daggerCompiler
+    kapt rootProject.ext.dependencies.daggerAndroidProcessor
 }

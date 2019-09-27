@@ -38,6 +38,24 @@ androidExtensions {
 }
 
 dependencies {
-    implementation appDependencies['implementation']
-    kapt appDependencies['kapt']
+    implementation project(':core')
+    implementation project(':data')
+    implementation project(':domain')
+    implementation project(':navigation')
+    implementation project(':features:movies')
+    implementation project(':features:movie')
+
+    implementation rootProject.ext.dependencies.appcompatV7
+    implementation rootProject.ext.dependencies.cicerone
+    implementation rootProject.ext.dependencies.dagger
+    implementation rootProject.ext.dependencies.daggerAndroid
+    implementation rootProject.ext.dependencies.daggerAndroidSupport
+    implementation rootProject.ext.dependencies.kotlinStdlib
+    implementation rootProject.ext.dependencies.retrofit
+    implementation rootProject.ext.dependencies.retrofitMoshi
+    implementation rootProject.ext.dependencies.retrofitRxJava2
+    implementation rootProject.ext.dependencies.stetho
+
+    kapt rootProject.ext.dependencies.daggerCompiler
+    kapt rootProject.ext.dependencies.daggerAndroidProcessor
 }

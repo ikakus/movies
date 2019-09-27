@@ -25,6 +25,13 @@ android {
 }
 
 dependencies {
-    implementation dataDependencies['implementation']
-    kapt dataDependencies['kapt']
+    implementation project(':domain')
+
+    implementation rootProject.ext.dependencies.kotlinStdlib
+    implementation rootProject.ext.dependencies.moshi
+    implementation rootProject.ext.dependencies.okhttp
+    implementation rootProject.ext.dependencies.retrofit
+    implementation rootProject.ext.dependencies.rxJava
+
+    kapt rootProject.ext.dependencies.moshiCodegen
 }

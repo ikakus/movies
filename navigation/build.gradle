@@ -19,6 +19,13 @@ android {
 }
 
 dependencies {
-    implementation navigationDependencies['implementation']
-    kapt navigationDependencies['kapt']
+    implementation rootProject.ext.dependencies.cicerone
+    implementation rootProject.ext.dependencies.dagger
+    implementation rootProject.ext.dependencies.daggerAndroid
+    implementation rootProject.ext.dependencies.daggerAndroidSupport
+    implementation rootProject.ext.dependencies.kotlinStdlib
+    implementation rootProject.ext.dependencies.rxJava
+
+    kapt rootProject.ext.dependencies.daggerCompiler
+    kapt rootProject.ext.dependencies.daggerAndroidProcessor
 }

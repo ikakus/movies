@@ -5,5 +5,7 @@ sourceCompatibility = compiler.java
 targetCompatibility = compiler.java
 
 dependencies {
-    implementation domainDependencies
+    implementation rootProject.ext.dependencies.kotlinStdlib
+    implementation rootProject.ext.dependencies.rxJava
+    implementation rootProject.ext.dependencies.moshi
 }

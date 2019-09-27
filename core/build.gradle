@@ -24,8 +24,19 @@ androidExtensions {
     experimental = true
 }
 
-
 dependencies {
-    implementation coreDependencies['implementation']
-    kapt coreDependencies['kapt']
+    implementation project(':data')
+    implementation project(':domain')
+
+    implementation rootProject.ext.dependencies.appcompatV7
+    implementation rootProject.ext.dependencies.dagger
+    implementation rootProject.ext.dependencies.daggerAndroid
+    implementation rootProject.ext.dependencies.daggerAndroidSupport
+    implementation rootProject.ext.dependencies.kotlinStdlib
+    implementation rootProject.ext.dependencies.lifecycleCommonJava8
+    implementation rootProject.ext.dependencies.rxJava
+    implementation rootProject.ext.dependencies.rxRelay
+
+    kapt rootProject.ext.dependencies.daggerCompiler
+    kapt rootProject.ext.dependencies.daggerAndroidProcessor
 }
