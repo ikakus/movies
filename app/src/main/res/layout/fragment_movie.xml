@@ -91,11 +91,11 @@
                 android:id="@+id/textview_movie_rating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/imageview_movie_poster"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="32dp"
                 android:textSize="48sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imageview_movie_poster"
                 tools:text="7.6"
                 />
 
@@ -270,21 +270,24 @@
             android:textColor="@color/astronaut"
             />
 
-        <com.google.android.material.button.MaterialButton
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_movie_retry"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="200dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:padding="16dp"
+            android:paddingStart="36dp"
+            android:paddingEnd="36dp"
             android:text="@string/retry"
             />
+
     </LinearLayout>
 
     <FrameLayout
         android:id="@+id/framelayout_movie_loading"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="128dp"
         android:background="@color/semi_transparent_white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appbar_movie"

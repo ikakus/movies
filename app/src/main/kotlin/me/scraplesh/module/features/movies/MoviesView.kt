@@ -92,10 +92,10 @@ class MoviesView @Inject constructor(moviesAdapter: MoviesAdapter) :
     }
   }
 
-  override fun getView(inflater: LayoutInflater, container: ViewGroup?): View {
+  override fun createView(inflater: LayoutInflater, container: ViewGroup?): View {
     return inflater.inflate(R.layout.fragment_movies, container, false).apply {
       moviesList = recyclerview_movies
-      loadingView = progressbar_movies
+      loadingView = framelayout_movies_loading
       noContentView = textview_movies_no_content
       errorView = group_movies_error
       buttonRetry = button_movies_retry

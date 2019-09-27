@@ -169,7 +169,7 @@ class MovieView @Inject constructor() : MviCoreView<MovieView.UiEvent, MovieView
     }
   }
 
-  override fun getView(inflater: LayoutInflater, container: ViewGroup?): View =
+  override fun createView(inflater: LayoutInflater, container: ViewGroup?): View =
     inflater.inflate(R.layout.fragment_movie, container, false).apply {
       toolbar = toolbar_movie
       posterImage = imageview_movie_poster

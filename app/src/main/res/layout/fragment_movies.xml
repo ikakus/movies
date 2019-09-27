@@ -29,14 +29,23 @@
         tools:listitem="@layout/item_movies"
         />
 
-    <ProgressBar
-        android:id="@+id/progressbar_movies"
-        style="@style/ProgressBar"
+    <FrameLayout
+        android:id="@+id/framelayout_movies_loading"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/semi_transparent_white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_movies"
+        tools:visibility="gone"
+        >
+
+        <ProgressBar
+            style="@style/ProgressBar"
+            android:layout_gravity="center"
+            />
+
+    </FrameLayout>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textview_movies_no_content"

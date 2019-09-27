@@ -28,7 +28,12 @@ abstract class MviCoreView<UiEvent, State> private constructor(
     disposeBag = CompositeDisposable()
   )
 
-  abstract fun getView(inflater: LayoutInflater, container: ViewGroup?): View
+  private var view: View? = null
+
+  fun getView(inflater: LayoutInflater, container: ViewGroup?): View =
+    view ?: createView(inflater, container).also { view = it }
+
+  abstract fun createView(inflater: LayoutInflater, container: ViewGroup?): View
 
   override fun onDestroy(owner: LifecycleOwner) {
     disposeBag.clear()
