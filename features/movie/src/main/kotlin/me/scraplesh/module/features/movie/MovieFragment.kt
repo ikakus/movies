@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import me.scraplesh.module.core.di.provideDomainComponent
+import me.scraplesh.module.core.entities.BriefMovie
 import me.scraplesh.module.core.platform.argumentNotNull
 import me.scraplesh.module.domain.entities.BriefMovieEntity
-import me.scraplesh.module.entities.BriefMovie
 import me.scraplesh.module.features.movie.di.DaggerMovieComponent
 import me.scraplesh.module.features.movie.di.MovieModule
 import me.scraplesh.module.navigation.provideCoordinator

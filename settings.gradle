@@ -5,4 +5,5 @@ include ':app',
         ':data',
         ':core',
         ':navigation',
-        ':features:movies'
+        ':features:movies',
+        ':features:movie'

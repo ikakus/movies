@@ -1,4 +1,4 @@
-package me.scraplesh.module.entities
+package me.scraplesh.module.core.entities
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

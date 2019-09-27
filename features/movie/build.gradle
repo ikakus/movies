@@ -19,13 +19,7 @@ android {
     }
 }
 
-// FAQ: It's for @Parcelize annotation and LayoutContainer interface.
-androidExtensions {
-    experimental = true
-}
-
-
 dependencies {
-    implementation coreDependencies['implementation']
-    kapt coreDependencies['kapt']
+    implementation movieDependencies['implementation']
+    kapt movieDependencies['kapt']
 }

@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar_movie"
+        android:layout_width="match_parent"
+        android:layout_height="128dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        >
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:collapsedTitleTextAppearance="@style/CollapsedToolbar.TitleText"
+            app:contentScrim="@color/astronaut"
+            app:expandedTitleTextAppearance="@style/ExpandedToolbar.TitleText"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            tools:title="Mad Max 2: The Road Warrior"
+            >
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar_movie"
+                style="@style/Toolbar.ModuleToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:navigationIcon="@drawable/ic_arrow_left"
+                tools:title="Mad Max 2: The Road Warrior"
+                />
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollview_movie"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="16dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_movie_top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="16dp"
+                />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_movie_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="16dp"
+                />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_movie_end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="16dp"
+                />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imageview_movie_poster"
+                android:layout_width="120dp"
+                android:layout_height="0dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintDimensionRatio="h,3:5"
+                app:layout_constraintEnd_toEndOf="@id/guideline_movie_end"
+                app:layout_constraintTop_toTopOf="@id/guideline_movie_top"
+                tools:src="@drawable/dummy"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textview_movie_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:textSize="48sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imageview_movie_poster"
+                tools:text="7.6"
+                />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="end"
+                app:constraint_referenced_ids="textview_movie_language_title,textview_movie_director_title,textview_movie_released_title,textview_movie_year_title,textview_movie_rated_title,textview_movie_runtime_title"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textview_movie_year_title"
+                style="@style/MovieTextViewTitle"
+                android:text="@string/year"
+                app:layout_constraintStart_toStartOf="@id/guideline_movie_start"
+                app:layout_constraintTop_toTopOf="@id/guideline_movie_top"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textview_movie_year"
+                style="@style/MovieTextView"
+                app:layout_constraintBaseline_toBaselineOf="@id/textview_movie_year_title"
+                app:layout_constraintStart_toStartOf="@id/barrier"
+                tools:text="2011"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textview_movie_rated_title"
+                style="@style/MovieTextViewTitle"
+                android:text="@string/rated"
+                app:layout_constraintStart_toStartOf="@id/guideline_movie_start"
+                app:layout_constraintTop_toBottomOf="@id/textview_movie_year_title"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textview_movie_rated"
+                style="@style/MovieTextView"
+                app:layout_constraintBaseline_toBaselineOf="@id/textview_movie_rated_title"
+                app:layout_constraintStart_toStartOf="@id/barrier"
+                tools:text="R"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textview_movie_released_title"
+                style="@style/MovieTextViewTitle"
+                android:text="@string/released"
+                app:layout_constraintStart_toStartOf="@id/guideline_movie_start"
+                app:layout_constraintTop_toBottomOf="@id/textview_movie_rated_title"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textview_movie_released"
+                style="@style/MovieTextView"
+                app:layout_constraintBaseline_toBaselineOf="@id/textview_movie_released_title"
+                app:layout_constraintStart_toStartOf="@id/barrier"
+                tools:text="21 May 1982"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textview_movie_runtime_title"
+                style="@style/MovieTextViewTitle"
+                android:text="@string/runtime"
+                app:layout_constraintStart_toStartOf="@id/guideline_movie_start"
+                app:layout_constraintTop_toBottomOf="@id/textview_movie_released_title"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textview_movie_runtime"
+                style="@style/MovieTextView"
+                app:layout_constraintBaseline_toBaselineOf="@id/textview_movie_runtime_title"
+                app:layout_constraintStart_toStartOf="@id/barrier"
+                tools:text="94 min"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textview_movie_genre_title"
+                style="@style/MovieTextViewTitle"
+                android:text="@string/genre"
+                app:layout_constraintStart_toStartOf="@id/guideline_movie_start"
+                app:layout_constraintTop_toBottomOf="@id/textview_movie_runtime"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textview_movie_genre"
+                style="@style/MovieTextView"
+                app:layout_constraintBaseline_toBaselineOf="@id/textview_movie_genre_title"
+                app:layout_constraintEnd_toStartOf="@id/imageview_movie_poster"
+                app:layout_constraintStart_toStartOf="@id/barrier"
+                tools:text="Action, Adventure, Sci-Fi, Thriller"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textview_movie_director_title"
+                style="@style/MovieTextViewTitle"
+                android:text="@string/director"
+                app:layout_constraintStart_toStartOf="@id/guideline_movie_start"
+                app:layout_constraintTop_toBottomOf="@id/textview_movie_genre"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textview_movie_director"
+                style="@style/MovieTextView"
+                app:layout_constraintBaseline_toBaselineOf="@id/textview_movie_director_title"
+                app:layout_constraintEnd_toStartOf="@id/imageview_movie_poster"
+                app:layout_constraintStart_toStartOf="@id/barrier"
+                tools:text="George Miller"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textview_movie_language_title"
+                style="@style/MovieTextViewTitle"
+                android:text="@string/language"
+                app:layout_constraintStart_toStartOf="@id/guideline_movie_start"
+                app:layout_constraintTop_toBottomOf="@id/textview_movie_director_title"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textview_movie_language"
+                style="@style/MovieTextView"
+                app:layout_constraintBaseline_toBaselineOf="@id/textview_movie_language_title"
+                app:layout_constraintEnd_toStartOf="@id/imageview_movie_poster"
+                app:layout_constraintStart_toStartOf="@id/barrier"
+                tools:text="English"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textview_movie_country_title"
+                style="@style/MovieTextViewTitle"
+                android:text="@string/country"
+                app:layout_constraintStart_toStartOf="@id/guideline_movie_start"
+                app:layout_constraintTop_toBottomOf="@id/textview_movie_language_title"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textview_movie_country"
+                style="@style/MovieTextView"
+                app:layout_constraintBaseline_toBaselineOf="@id/textview_movie_country_title"
+                app:layout_constraintEnd_toStartOf="@id/imageview_movie_poster"
+                app:layout_constraintStart_toStartOf="@id/barrier"
+                tools:text="Australia"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textview_movie_plot"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="@id/guideline_movie_end"
+                app:layout_constraintStart_toStartOf="@id/guideline_movie_start"
+                app:layout_constraintTop_toBottomOf="@id/textview_movie_rating"
+                tools:text="In the post-apocalyptic Australian wasteland, a cynical drifter agrees to help a small, gasoline rich community escape a horde of bandits."
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:id="@+id/linearlayout_movie_error"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:visibility="gone"
+        >
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/error_loading_movie_info"
+            android:textColor="@color/astronaut"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_movie_retry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:padding="16dp"
+            android:paddingStart="36dp"
+            android:paddingEnd="36dp"
+            android:text="@string/retry"
+            />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/framelayout_movie_loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="128dp"
+        android:background="@color/semi_transparent_white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appbar_movie"
+        tools:visibility="gone"
+        >
+
+        <ProgressBar
+            style="@style/ProgressBar"
+            android:layout_gravity="center"
+            />
+
+    </FrameLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

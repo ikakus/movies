@@ -12,7 +12,6 @@ import com.jakewharton.rxbinding3.view.visibility
 import com.squareup.picasso.Picasso
 import io.reactivex.rxkotlin.addTo
 import kotlinx.android.synthetic.main.fragment_movie.view.*
-import me.scraplesh.module.R
 import me.scraplesh.module.core.MviCoreView
 import javax.inject.Inject
 import kotlin.properties.Delegates

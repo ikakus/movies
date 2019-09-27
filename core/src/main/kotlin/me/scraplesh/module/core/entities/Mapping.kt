@@ -1,4 +1,4 @@
-package me.scraplesh.module.entities
+package me.scraplesh.module.core.entities
 
 interface Mapping<T> {
   val entity: T
