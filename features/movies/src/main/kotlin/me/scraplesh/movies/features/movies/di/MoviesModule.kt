@@ -29,4 +29,5 @@ class MoviesModule(
     feature,
     coordinator
   )
+
 }

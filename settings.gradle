@@ -1,9 +1,13 @@
-rootProject.name='Module'
+rootProject.name='Movies'
 
 include ':app',
         ':domain',
         ':data',
         ':core',
         ':navigation',
-        ':features:movies',
-        ':features:movie'
+        // Features
+        ':feature-movies',
+        ':feature-movie'
+
+project(':feature-movies').projectDir = new File(settingsDir, '/features/movies')
+project(':feature-movie').projectDir = new File(settingsDir, '/features/movie')

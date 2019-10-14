@@ -45,8 +45,8 @@ dependencies {
     implementation project(':data')
     implementation project(':domain')
     implementation project(':navigation')
-    implementation project(':features:movies')
-    implementation project(':features:movie')
+    implementation project(':feature-movies')
+    implementation project(':feature-movie')
 
     implementation rootProject.ext.dependencies.appcompatV7
     implementation rootProject.ext.dependencies.cicerone

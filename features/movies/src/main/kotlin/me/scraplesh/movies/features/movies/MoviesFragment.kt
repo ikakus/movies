@@ -30,10 +30,7 @@ class MoviesFragment : Fragment() {
 
   private fun inject() {
     DaggerMoviesComponent.builder()
-      .domainComponent(provideDomainComponent(requireContext()))
-      .moviesModule(MoviesModule(this,
-        provideCoordinator(requireActivity())
-      ))
+      .moviesModule(MoviesModule(this, provideCoordinator(requireActivity())))
       .build()
       .inject(this)
   }
