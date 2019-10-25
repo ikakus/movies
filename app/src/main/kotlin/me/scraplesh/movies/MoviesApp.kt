@@ -11,6 +11,7 @@ import me.scraplesh.movies.di.DaggerAppComponent
 
 class MoviesApp : Application(), HasDomainComponent {
   val appComponent: AppComponent = DaggerAppComponent.builder().build()
+
   override val domainComponent: DomainComponent = DaggerDomainComponent.builder()
     .domainModule(DomainModule(appComponent.imdbWebApi()))
     .build()
