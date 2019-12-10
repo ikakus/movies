@@ -7,13 +7,12 @@ import com.badoo.mvicore.element.Reducer
 import com.badoo.mvicore.feature.ActorReducerFeature
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
-import me.scraplesh.movies.features.movies.MoviesFeature.Wish
-import me.scraplesh.movies.features.movies.MoviesFeature.State
-import me.scraplesh.movies.features.movies.MoviesFeature.Effect
-import me.scraplesh.movies.features.movies.MoviesFeature.News
 import me.scraplesh.movies.domain.entities.BriefMovieEntity
 import me.scraplesh.movies.domain.usecases.SearchMoviesUseCase
-import me.scraplesh.movies.navigation.NavigationEvent
+import me.scraplesh.movies.features.movies.MoviesFeature.Effect
+import me.scraplesh.movies.features.movies.MoviesFeature.News
+import me.scraplesh.movies.features.movies.MoviesFeature.State
+import me.scraplesh.movies.features.movies.MoviesFeature.Wish
 
 class MoviesFeature(initialState: State, searchMoviesUseCase: SearchMoviesUseCase) :
   ActorReducerFeature<Wish, Effect, State, News>(
@@ -45,7 +44,7 @@ class MoviesFeature(initialState: State, searchMoviesUseCase: SearchMoviesUseCas
   }
 
   sealed class News {
-    class MovieSelected(val movie: BriefMovieEntity) : News(), NavigationEvent
+    class MovieSelected(val movie: BriefMovieEntity) : News()
   }
 
   class MoviesBootstrapper : Bootstrapper<Wish> {

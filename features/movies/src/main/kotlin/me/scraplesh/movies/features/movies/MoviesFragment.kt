@@ -5,33 +5,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import me.scraplesh.movies.core.di.provideDomainComponent
-import me.scraplesh.movies.features.movies.di.DaggerMoviesComponent
-import me.scraplesh.movies.features.movies.di.MoviesModule
-import me.scraplesh.movies.navigation.provideCoordinator
-import javax.inject.Inject
+import com.badoo.mvicore.android.AndroidBindings
+import org.koin.androidx.scope.currentScope
+import org.koin.core.parameter.parametersOf
 
 class MoviesFragment : Fragment() {
-  @Inject lateinit var mviView: MoviesView
-  @Inject lateinit var bindings: MoviesBindings
+  private val bindings: AndroidBindings<MoviesView> by currentScope.inject { parametersOf(this) }
+  private val mviView: MoviesView by currentScope.inject()
 
   override fun onCreate(savedInstanceState: Bundle?) {
-    inject()
     super.onCreate(savedInstanceState)
-    lifecycle.addObserver(mviView)
     bindings.setup(mviView)
   }
 
   override fun onCreateView(
-    inflater: LayoutInflater,
-    container: ViewGroup?,
-    savedInstanceState: Bundle?
+      inflater: LayoutInflater,
+      container: ViewGroup?,
+      savedInstanceState: Bundle?
   ): View? = mviView.getView(inflater, container)
-
-  private fun inject() {
-    DaggerMoviesComponent.builder()
-      .moviesModule(MoviesModule(this, provideCoordinator(requireActivity())))
-      .build()
-      .inject(this)
-  }
 }

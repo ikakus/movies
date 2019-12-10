@@ -13,7 +13,6 @@ import me.scraplesh.movies.features.movie.MovieFeature.Effect
 import me.scraplesh.movies.features.movie.MovieFeature.News
 import me.scraplesh.movies.features.movie.MovieFeature.State
 import me.scraplesh.movies.features.movie.MovieFeature.Wish
-import me.scraplesh.movies.navigation.NavigationEvent
 
 class MovieFeature(initialState: State, getMovie: GetMovieUseCase) :
   ActorReducerFeature<Wish, Effect, State, News>(
@@ -45,7 +44,7 @@ class MovieFeature(initialState: State, getMovie: GetMovieUseCase) :
   }
 
   sealed class News {
-    object ExitRequested : News(), NavigationEvent
+    object ExitRequested : News()
   }
 
   class MovieBootstrapper : Bootstrapper<Wish> {

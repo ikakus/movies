@@ -5,14 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import me.scraplesh.movies.core.di.provideDomainComponent
+import com.badoo.mvicore.android.AndroidBindings
 import me.scraplesh.movies.core.entities.BriefMovie
 import me.scraplesh.movies.core.platform.argumentNotNull
 import me.scraplesh.movies.domain.entities.BriefMovieEntity
-import me.scraplesh.movies.features.movie.di.DaggerMovieComponent
-import me.scraplesh.movies.features.movie.di.MovieModule
-import me.scraplesh.movies.navigation.provideCoordinator
-import javax.inject.Inject
+import org.koin.androidx.scope.currentScope
+import org.koin.core.parameter.parametersOf
 
 class MovieFragment : Fragment() {
 
@@ -24,35 +22,21 @@ class MovieFragment : Fragment() {
     }
   }
 
-  @Inject lateinit var mviView: MovieView
-  @Inject lateinit var bindings: MovieBindings
+  private val bindings: AndroidBindings<MovieView> by currentScope.inject {
+    parametersOf(movie.entity, this)
+  }
+  private val mviView: MovieView by currentScope.inject()
   private val movie: BriefMovie by argumentNotNull(ARG_MOVIE)
 
   override fun onCreate(savedInstanceState: Bundle?) {
-    inject()
     super.onCreate(savedInstanceState)
-    lifecycle.addObserver(mviView)
     bindings.setup(mviView)
   }
 
   override fun onCreateView(
-    inflater: LayoutInflater,
-    container: ViewGroup?,
-    savedInstanceState: Bundle?
+      inflater: LayoutInflater,
+      container: ViewGroup?,
+      savedInstanceState: Bundle?
   ): View? = mviView.getView(inflater, container)
-
-  private fun inject() {
-    DaggerMovieComponent.builder()
-      .domainComponent(provideDomainComponent(requireContext()))
-      .movieModule(
-        MovieModule(
-          movie.entity,
-          this,
-          provideCoordinator(requireActivity())
-        )
-      )
-      .build()
-      .inject(this)
-  }
 
 }

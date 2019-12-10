@@ -4,7 +4,6 @@ include ':app',
         ':domain',
         ':data',
         ':core',
-        ':navigation',
         // Features
         ':feature-movies',
         ':feature-movie'

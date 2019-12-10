@@ -13,10 +13,9 @@ import com.squareup.picasso.Picasso
 import io.reactivex.rxkotlin.addTo
 import kotlinx.android.synthetic.main.fragment_movie.view.*
 import me.scraplesh.movies.core.MviCoreView
-import javax.inject.Inject
 import kotlin.properties.Delegates
 
-class MovieView @Inject constructor() : MviCoreView<MovieView.UiEvent, MovieView.ViewModel>() {
+class MovieView : MviCoreView<MovieView.UiEvent, MovieView.ViewModel>() {
   sealed class UiEvent {
     object BackClicked : UiEvent()
     object Retry : UiEvent()

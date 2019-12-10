@@ -1,7 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdk
@@ -22,12 +21,11 @@ android {
 dependencies {
     implementation project(':core')
     implementation project(':domain')
-    implementation project(':navigation')
 
     implementation rootProject.ext.dependencies.constraintlayout
-    implementation rootProject.ext.dependencies.dagger
-    implementation rootProject.ext.dependencies.daggerAndroid
-    implementation rootProject.ext.dependencies.daggerAndroidSupport
+    implementation rootProject.ext.dependencies.koin
+    implementation rootProject.ext.dependencies.koinAndroid
+    implementation rootProject.ext.dependencies.koinScope
     implementation rootProject.ext.dependencies.lifecycleCommonJava8
     implementation rootProject.ext.dependencies.kotlinStdlib
     implementation rootProject.ext.dependencies.material
@@ -40,7 +38,4 @@ dependencies {
     implementation rootProject.ext.dependencies.rxJava
     implementation rootProject.ext.dependencies.rxKotlin
     implementation rootProject.ext.dependencies.rxRelay
-
-    kapt rootProject.ext.dependencies.daggerCompiler
-    kapt rootProject.ext.dependencies.daggerAndroidProcessor
 }

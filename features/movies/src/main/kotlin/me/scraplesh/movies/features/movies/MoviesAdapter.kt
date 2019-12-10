@@ -10,14 +10,15 @@ import io.reactivex.ObservableSource
 import io.reactivex.Observer
 import io.reactivex.functions.Consumer
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.item_movies.*
+import kotlinx.android.synthetic.main.item_movies.imageview_itemmovies
+import kotlinx.android.synthetic.main.item_movies.textview_itemmovies_title
+import kotlinx.android.synthetic.main.item_movies.textview_itemmovies_year
 import me.scraplesh.movies.domain.entities.BriefMovieEntity
-import javax.inject.Inject
 
-class MoviesAdapter @Inject constructor() :
-  RecyclerView.Adapter<MoviesAdapter.ViewHolder>(),
-  Consumer<List<BriefMovieEntity>>,
-  ObservableSource<BriefMovieEntity> {
+class MoviesAdapter :
+    RecyclerView.Adapter<MoviesAdapter.ViewHolder>(),
+    Consumer<List<BriefMovieEntity>>,
+    ObservableSource<BriefMovieEntity> {
 
   private var movies: List<BriefMovieEntity> = emptyList()
   private val selectedMovies = PublishRelay.create<BriefMovieEntity>()
@@ -25,8 +26,8 @@ class MoviesAdapter @Inject constructor() :
   override fun getItemCount(): Int = movies.size
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder = ViewHolder(
-    LayoutInflater.from(parent.context)
-      .inflate(R.layout.item_movies, parent, false)
+      LayoutInflater.from(parent.context)
+          .inflate(R.layout.item_movies, parent, false)
   )
 
   override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -35,8 +36,8 @@ class MoviesAdapter @Inject constructor() :
         itemView.setOnClickListener { selectedMovies.accept(movie) }
 
         Picasso.get()
-          .load(movie.posterUrl)
-          .into(imageview_itemmovies)
+            .load(movie.posterUrl)
+            .into(imageview_itemmovies)
 
         textview_itemmovies_title.text = movie.title
         textview_itemmovies_year.text = movie.year
@@ -53,7 +54,7 @@ class MoviesAdapter @Inject constructor() :
   }
 
   class ViewHolder(override val containerView: View) :
-    RecyclerView.ViewHolder(containerView),
-    LayoutContainer
+      RecyclerView.ViewHolder(containerView),
+      LayoutContainer
 
 }

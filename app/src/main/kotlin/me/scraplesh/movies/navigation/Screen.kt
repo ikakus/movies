@@ -1,4 +1,4 @@
-package me.scraplesh.movies
+package me.scraplesh.movies.navigation
 
 import androidx.fragment.app.Fragment
 import me.scraplesh.movies.features.movie.MovieFragment
