@@ -10,8 +10,8 @@ import com.jakewharton.rxbinding3.view.visibility
 import io.reactivex.Observable
 import io.reactivex.rxkotlin.addTo
 import kotlinx.android.synthetic.main.fragment_movies.view.button_movies_retry
+import kotlinx.android.synthetic.main.fragment_movies.view.constraintlayout_movies_banner
 import kotlinx.android.synthetic.main.fragment_movies.view.framelayout_movies_loading
-import kotlinx.android.synthetic.main.fragment_movies.view.group_movies_error
 import kotlinx.android.synthetic.main.fragment_movies.view.recyclerview_movies
 import kotlinx.android.synthetic.main.fragment_movies.view.textview_movies_no_content
 import me.scraplesh.movies.core.MviCoreView
@@ -98,7 +98,7 @@ class MoviesView(moviesAdapter: MoviesAdapter) :
       moviesList = recyclerview_movies
       loadingView = framelayout_movies_loading
       noContentView = textview_movies_no_content
-      errorView = group_movies_error
+      errorView = constraintlayout_movies_banner
       buttonRetry = button_movies_retry
     }
   }

@@ -53,6 +53,7 @@ dependencies {
     implementation rootProject.ext.dependencies.koinAndroid
     implementation rootProject.ext.dependencies.koinScope
     implementation rootProject.ext.dependencies.kotlinStdlib
+    implementation rootProject.ext.dependencies.material
     implementation rootProject.ext.dependencies.mvicore
     implementation rootProject.ext.dependencies.mvicoreAndroid
     implementation rootProject.ext.dependencies.retrofit

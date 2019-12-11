@@ -7,6 +7,7 @@ import me.scraplesh.movies.data.entities.database.MovieDbEntity
 import me.scraplesh.movies.data.entities.database.MoviesDao
 import me.scraplesh.movies.domain.entities.MovieEntity
 import me.scraplesh.movies.domain.repo.MoviesRepository
+import java.lang.IllegalArgumentException
 import java.util.concurrent.TimeUnit
 
 class RemoteMoviesRepository(private val api: ImdbWebApi, private val moviesDao: MoviesDao) :
@@ -35,6 +36,8 @@ class RemoteMoviesRepository(private val api: ImdbWebApi, private val moviesDao:
       .map { envelope -> envelope.results.map { it.entity } }
       .doOnSuccess { storeMoviesInDb(it) }
       .toObservable()
+      .delay(1, TimeUnit.SECONDS)
+      .flatMap { Observable.error<List<MovieEntity>>(IllegalArgumentException("trololo")) }
 
   private fun getMovieFromDb(imdbId: String): Observable<MovieEntity> = moviesDao.getMovie(imdbId)
     .subscribeOn(Schedulers.io())
