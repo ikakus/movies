@@ -1,6 +1,7 @@
 package me.scraplesh.movies.data.repo
 
 import io.reactivex.Observable
+import io.reactivex.schedulers.Schedulers
 import me.scraplesh.movies.data.datasources.ImdbWebApi
 import me.scraplesh.movies.data.entities.database.MovieDbEntity
 import me.scraplesh.movies.data.entities.database.MoviesDao
@@ -12,43 +13,41 @@ class RemoteMoviesRepository(private val api: ImdbWebApi, private val moviesDao:
   MoviesRepository {
 
   override fun searchMovies(query: String): Observable<List<MovieEntity>> =
-    Observable.concatArrayEager(
+    Observable.concatArrayEagerDelayError(
       getMoviesFromDb(),
       getMoviesFromApi(query)
     )
-      .materialize()
-      .filter { !it.isOnError }
-      .dematerialize { it }  // FAQ: check before updating RxJava dependency
-
 
   override fun getMovie(imdbId: String): Observable<MovieEntity> =
-    Observable.concatArrayEager(
+    Observable.concatArrayEagerDelayError(
       getMovieFromDb(imdbId),
       getMovieFromApi(imdbId)
     )
-      .materialize()
-      .filter { !it.isOnError }
-      .dematerialize { it }  // FAQ: check before updating RxJava dependency
-
 
   private fun getMoviesFromDb(): Observable<List<MovieEntity>> = moviesDao.getAllMovies()
+    .subscribeOn(Schedulers.io())
     .map { movies -> movies.map { it.entity } }
-    .debounce(400, TimeUnit.MILLISECONDS)
+    .delay(400, TimeUnit.MILLISECONDS)
+    .toObservable()
 
   private fun getMoviesFromApi(query: String): Observable<List<MovieEntity>> =
     api.searchMovies(query)
       .map { envelope -> envelope.results.map { it.entity } }
-      .doOnNext { storeUsersInDb(it) }
+      .doOnSuccess { storeMoviesInDb(it) }
+      .toObservable()
 
   private fun getMovieFromDb(imdbId: String): Observable<MovieEntity> = moviesDao.getMovie(imdbId)
+    .subscribeOn(Schedulers.io())
     .map { movie -> movie.entity }
-    .debounce(400, TimeUnit.MILLISECONDS)
+    .delay(400, TimeUnit.MILLISECONDS)
+    .toObservable()
 
   private fun getMovieFromApi(imdbId: String): Observable<MovieEntity> = api.getMovie(imdbId)
     .map { it.entity }
-    .doOnNext { updateMovieInDb(it) }
+    .doOnSuccess { updateMovieInDb(it) }
+    .toObservable()
 
-  private fun storeUsersInDb(movies: List<MovieEntity>) {
+  private fun storeMoviesInDb(movies: List<MovieEntity>) {
     moviesDao.insertMovies(movies.map { MovieDbEntity(it) })
   }
 

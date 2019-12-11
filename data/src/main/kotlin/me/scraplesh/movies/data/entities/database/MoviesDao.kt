@@ -4,8 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import io.reactivex.Completable
-import io.reactivex.Observable
+import io.reactivex.Single
 
 @Dao
 interface MoviesDao {
@@ -16,8 +15,8 @@ interface MoviesDao {
   fun updateMovie(movie: MovieDbEntity)
 
   @Query("SELECT * FROM movies ORDER BY imdbId ASC")
-  fun getAllMovies(): Observable<List<MovieDbEntity>>
+  fun getAllMovies(): Single<List<MovieDbEntity>>
 
   @Query("SELECT * FROM movies WHERE imdbId = :imdbId")
-  fun getMovie(imdbId: String): Observable<MovieDbEntity>
+  fun getMovie(imdbId: String): Single<MovieDbEntity>
 }
