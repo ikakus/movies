@@ -49,6 +49,9 @@ dependencies {
 
     implementation rootProject.ext.dependencies.appcompatV7
     implementation rootProject.ext.dependencies.cicerone
+    implementation rootProject.ext.dependencies.debugdrawerBase
+    implementation rootProject.ext.dependencies.debugdrawerCommons
+    implementation rootProject.ext.dependencies.debugdrawerLogs
     implementation rootProject.ext.dependencies.koin
     implementation rootProject.ext.dependencies.koinAndroid
     implementation rootProject.ext.dependencies.koinScope
@@ -61,4 +64,10 @@ dependencies {
     implementation rootProject.ext.dependencies.retrofitRxJava2
     implementation rootProject.ext.dependencies.roomRuntime
     implementation rootProject.ext.dependencies.stetho
+
+    debugImplementation rootProject.ext.dependencies.chuck
+    debugImplementation rootProject.ext.dependencies.debugdrawer
+
+    releaseImplementation rootProject.ext.dependencies.chuckNoOp
+    releaseImplementation rootProject.ext.dependencies.debugdrawerNoOp
 }

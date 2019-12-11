@@ -2,6 +2,9 @@ package me.scraplesh.movies.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import io.palaima.debugdrawer.DebugDrawer
+import io.palaima.debugdrawer.commons.BuildModule
+import io.palaima.debugdrawer.logs.LogsModule
 import me.scraplesh.movies.R
 import me.scraplesh.movies.navigation.NavigationEvent
 import me.scraplesh.movies.navigation.RootCoordinator
@@ -21,6 +24,13 @@ class MainActivity : AppCompatActivity() {
     setContentView(R.layout.activity_main)
 
     coordinator.accept(NavigationEvent.ApplicationStarted)
+
+    DebugDrawer.Builder(this)
+      .modules(
+        LogsModule(),
+        BuildModule()
+      )
+      .build()
   }
 
   override fun onResumeFragments() {

@@ -6,10 +6,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
+import com.bumptech.glide.Glide
 import com.jakewharton.rxbinding3.appcompat.navigationClicks
 import com.jakewharton.rxbinding3.view.clicks
 import com.jakewharton.rxbinding3.view.visibility
-import com.squareup.picasso.Picasso
 import io.reactivex.rxkotlin.addTo
 import kotlinx.android.synthetic.main.fragment_movie.view.*
 import me.scraplesh.movies.core.MviCoreView
@@ -55,7 +55,7 @@ class MovieView : MviCoreView<MovieView.UiEvent, MovieView.ViewModel>() {
       states.map { it.posterUrl }
         .distinctUntilChanged()
         .subscribe { posterUrl ->
-          Picasso.get()
+          Glide.with(context)
             .load(posterUrl.takeUnless { it.isEmpty() })
             .into(this)
         }

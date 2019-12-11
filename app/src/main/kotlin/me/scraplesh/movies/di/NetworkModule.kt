@@ -2,9 +2,11 @@ package me.scraplesh.movies.di
 
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.squareup.moshi.Moshi
+import io.palaima.debugdrawer.logs.LogsModule
 import me.scraplesh.movies.BuildConfig
 import me.scraplesh.movies.data.datasources.ImdbWebApi
 import okhttp3.OkHttpClient
+import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -16,7 +18,12 @@ val networkModule = module {
       .baseUrl(BuildConfig.imdbApiUrl)
       .client(
         OkHttpClient.Builder()
-          .addNetworkInterceptor(StethoInterceptor())
+          .apply {
+            if (BuildConfig.DEBUG) {
+              addInterceptor(LogsModule.chuckInterceptor(androidContext()))
+              addNetworkInterceptor(StethoInterceptor())
+            }
+          }
           .build()
       )
       .addCallAdapterFactory(RxJava2CallAdapterFactory.createAsync())

@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.jakewharton.rxrelay2.PublishRelay
-import com.squareup.picasso.Picasso
 import io.reactivex.ObservableSource
 import io.reactivex.Observer
 import io.reactivex.functions.Consumer
@@ -35,9 +35,9 @@ class MoviesAdapter :
       holder.apply {
         itemView.setOnClickListener { selectedMovies.accept(movie) }
 
-        Picasso.get()
-            .load(movie.posterUrl)
-            .into(imageview_itemmovies)
+        Glide.with(itemView)
+          .load(movie.posterUrl)
+          .into(imageview_itemmovies)
 
         textview_itemmovies_title.text = movie.title
         textview_itemmovies_year.text = movie.year
