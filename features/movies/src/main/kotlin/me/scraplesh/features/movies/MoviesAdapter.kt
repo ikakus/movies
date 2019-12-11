@@ -1,4 +1,4 @@
-package me.scraplesh.movies.features.movies
+package me.scraplesh.features.movies
 
 import android.view.LayoutInflater
 import android.view.View
@@ -13,15 +13,15 @@ import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_movies.imageview_itemmovies
 import kotlinx.android.synthetic.main.item_movies.textview_itemmovies_title
 import kotlinx.android.synthetic.main.item_movies.textview_itemmovies_year
-import me.scraplesh.movies.domain.entities.BriefMovieEntity
+import me.scraplesh.movies.domain.entities.MovieEntity
 
 class MoviesAdapter :
     RecyclerView.Adapter<MoviesAdapter.ViewHolder>(),
-    Consumer<List<BriefMovieEntity>>,
-    ObservableSource<BriefMovieEntity> {
+    Consumer<List<MovieEntity>>,
+    ObservableSource<MovieEntity> {
 
-  private var movies: List<BriefMovieEntity> = emptyList()
-  private val selectedMovies = PublishRelay.create<BriefMovieEntity>()
+  private var movies: List<MovieEntity> = emptyList()
+  private val selectedMovies = PublishRelay.create<MovieEntity>()
 
   override fun getItemCount(): Int = movies.size
 
@@ -45,11 +45,11 @@ class MoviesAdapter :
     }
   }
 
-  override fun accept(newItems: List<BriefMovieEntity>) {
+  override fun accept(newItems: List<MovieEntity>) {
     movies = newItems
   }
 
-  override fun subscribe(observer: Observer<in BriefMovieEntity>) {
+  override fun subscribe(observer: Observer<in MovieEntity>) {
     selectedMovies.subscribe(observer)
   }
 

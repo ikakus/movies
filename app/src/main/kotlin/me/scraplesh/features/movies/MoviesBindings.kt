@@ -1,10 +1,10 @@
-package me.scraplesh.movies.features.movies
+package me.scraplesh.features.movies
 
 import androidx.lifecycle.LifecycleOwner
 import com.badoo.mvicore.android.AndroidBindings
 import com.badoo.mvicore.binder.using
-import me.scraplesh.movies.features.movies.MoviesFeature.Wish
-import me.scraplesh.movies.features.movies.MoviesView.UiEvent
+import me.scraplesh.features.movies.MoviesFeature.Wish
+import me.scraplesh.features.movies.MoviesView.UiEvent
 import me.scraplesh.movies.navigation.NavigationEvent
 import me.scraplesh.movies.navigation.RootCoordinator
 

@@ -1,4 +1,4 @@
-package me.scraplesh.movies.features.movie
+package me.scraplesh.features.movie
 
 import com.badoo.mvicore.element.Actor
 import com.badoo.mvicore.element.Bootstrapper
@@ -9,10 +9,10 @@ import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import me.scraplesh.movies.domain.entities.MovieEntity
 import me.scraplesh.movies.domain.usecases.GetMovieUseCase
-import me.scraplesh.movies.features.movie.MovieFeature.Effect
-import me.scraplesh.movies.features.movie.MovieFeature.News
-import me.scraplesh.movies.features.movie.MovieFeature.State
-import me.scraplesh.movies.features.movie.MovieFeature.Wish
+import me.scraplesh.features.movie.MovieFeature.Effect
+import me.scraplesh.features.movie.MovieFeature.News
+import me.scraplesh.features.movie.MovieFeature.State
+import me.scraplesh.features.movie.MovieFeature.Wish
 
 class MovieFeature(initialState: State, getMovie: GetMovieUseCase) :
   ActorReducerFeature<Wish, Effect, State, News>(
@@ -68,7 +68,6 @@ class MovieFeature(initialState: State, getMovie: GetMovieUseCase) :
 
     private fun loadMovie(imdbId: String): Observable<Effect> =
       getMovie(imdbId).map<Effect> { movie -> Effect.MovieLoaded(movie) }
-        .toObservable()
         .startWith(Effect.LoadingStarted)
   }
 

@@ -1,10 +1,9 @@
 package me.scraplesh.movies.domain.repo
 
-import io.reactivex.Single
-import me.scraplesh.movies.domain.entities.BriefMovieEntity
+import io.reactivex.Observable
 import me.scraplesh.movies.domain.entities.MovieEntity
 
 interface MoviesRepository {
-  fun searchMovies(query: String): Single<List<BriefMovieEntity>>
-  fun getMovie(imdbId: String): Single<MovieEntity>
+  fun searchMovies(query: String): Observable<List<MovieEntity>>
+  fun getMovie(imdbId: String): Observable<MovieEntity>
 }

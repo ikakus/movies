@@ -1,4 +1,4 @@
-package me.scraplesh.movies.features.movies
+package me.scraplesh.features.movies
 
 import com.badoo.mvicore.element.Actor
 import com.badoo.mvicore.element.Bootstrapper
@@ -7,12 +7,12 @@ import com.badoo.mvicore.element.Reducer
 import com.badoo.mvicore.feature.ActorReducerFeature
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
-import me.scraplesh.movies.domain.entities.BriefMovieEntity
+import me.scraplesh.features.movies.MoviesFeature.Effect
+import me.scraplesh.features.movies.MoviesFeature.News
+import me.scraplesh.features.movies.MoviesFeature.State
+import me.scraplesh.features.movies.MoviesFeature.Wish
+import me.scraplesh.movies.domain.entities.MovieEntity
 import me.scraplesh.movies.domain.usecases.SearchMoviesUseCase
-import me.scraplesh.movies.features.movies.MoviesFeature.Effect
-import me.scraplesh.movies.features.movies.MoviesFeature.News
-import me.scraplesh.movies.features.movies.MoviesFeature.State
-import me.scraplesh.movies.features.movies.MoviesFeature.Wish
 
 class MoviesFeature(initialState: State, searchMoviesUseCase: SearchMoviesUseCase) :
   ActorReducerFeature<Wish, Effect, State, News>(
@@ -25,7 +25,7 @@ class MoviesFeature(initialState: State, searchMoviesUseCase: SearchMoviesUseCas
 
   data class State(
     val defaultQuery: String,
-    val movies: List<BriefMovieEntity> = emptyList(),
+    val movies: List<MovieEntity> = emptyList(),
     val isLoading: Boolean = false,
     val error: Throwable? = null
   )
@@ -33,18 +33,18 @@ class MoviesFeature(initialState: State, searchMoviesUseCase: SearchMoviesUseCas
   sealed class Wish {
     object LoadMovies : Wish()
     object RetryLoadingMovies : Wish()
-    class ShowMovie(val movie: BriefMovieEntity) : Wish()
+    class ShowMovie(val movie: MovieEntity) : Wish()
   }
 
   sealed class Effect {
     object LoadingStarted : Effect()
     object NoEffect : Effect()
     class ErrorOccurred(val error: Throwable) : Effect()
-    class MoviesLoaded(val movies: List<BriefMovieEntity>) : Effect()
+    class MoviesLoaded(val movies: List<MovieEntity>) : Effect()
   }
 
   sealed class News {
-    class MovieSelected(val movie: BriefMovieEntity) : News()
+    class MovieSelected(val movie: MovieEntity) : News()
   }
 
   class MoviesBootstrapper : Bootstrapper<Wish> {
@@ -67,8 +67,8 @@ class MoviesFeature(initialState: State, searchMoviesUseCase: SearchMoviesUseCas
     private fun noEffect(): Observable<Effect> = Observable.just(Effect.NoEffect)
 
     private fun loadMovies(query: String): Observable<Effect> =
-      searchMoviesUseCase(query).map<Effect> { movies -> Effect.MoviesLoaded(movies) }
-        .toObservable()
+      searchMoviesUseCase(query)
+        .map<Effect> { movies -> Effect.MoviesLoaded(movies) }
         .startWith(Effect.LoadingStarted)
   }
 

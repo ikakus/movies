@@ -1,8 +1,9 @@
-package me.scraplesh.movies.data.entities
+package me.scraplesh.movies.data.entities.web
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
-import me.scraplesh.movies.domain.entities.BriefMovieEntity
+import me.scraplesh.movies.domain.entities.Mapping
+import me.scraplesh.movies.domain.entities.MovieEntity
 
 /*
 {
@@ -14,21 +15,21 @@ import me.scraplesh.movies.domain.entities.BriefMovieEntity
 }
  */
 @JsonClass(generateAdapter = true)
-data class BriefMovieData(
+data class BriefMovieWebEntity(
   @Json(name = TITLE) val title: String,
   @Json(name = YEAR) val year: String,
   @Json(name = TYPE) val type: String,
   @Json(name = IMDB_ID) val imdbId: String,
   @Json(name = POSTER) val posterUrl: String
-) : MappingData<BriefMovieEntity> {
+) : Mapping<MovieEntity> {
 
-  override val entity: BriefMovieEntity
-    get() = BriefMovieEntity(
-      title,
-      year,
-      type,
-      imdbId,
-      posterUrl
+  override val entity: MovieEntity
+    get() = MovieEntity(
+      title = title,
+      year = year,
+      type = type,
+      imdbId = imdbId,
+      posterUrl = posterUrl
     )
 
   private companion object {

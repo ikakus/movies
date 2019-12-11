@@ -1,7 +1,8 @@
-package me.scraplesh.movies.data.entities
+package me.scraplesh.movies.data.entities.web
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import me.scraplesh.movies.domain.entities.Mapping
 import me.scraplesh.movies.domain.entities.MovieEntity
 
 /*
@@ -47,10 +48,11 @@ import me.scraplesh.movies.domain.entities.MovieEntity
 }
  */
 @JsonClass(generateAdapter = true)
-data class MovieData(
+data class MovieWebEntity(
   @Json(name = TITLE) val title: String,
   @Json(name = YEAR) val year: String,
   @Json(name = IMDB_ID) val imdbId: String,
+  @Json(name = POSTER) val poster: String,
   @Json(name = RATED) val rated: String,
   @Json(name = RELEASED) val released: String,
   @Json(name = RUNTIME) val runtime: String,
@@ -59,10 +61,8 @@ data class MovieData(
   @Json(name = PLOT) val plot: String,
   @Json(name = LANGUAGE) val language: String,
   @Json(name = COUNTRY) val country: String,
-  @Json(name = POSTER) val poster: String,
   @Json(name = IMDB_RATING) val rating: String
-) :
-  MappingData<MovieEntity> {
+) : Mapping<MovieEntity> {
 
   override val entity: MovieEntity
     get() = MovieEntity(
@@ -77,7 +77,7 @@ data class MovieData(
       plot = plot,
       language = language,
       country = country,
-      poster = poster,
+      posterUrl = poster,
       rating = rating
     )
 

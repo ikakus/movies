@@ -8,7 +8,7 @@ import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.Router
 import ru.terrakok.cicerone.android.support.SupportAppNavigator
 
-val mainModule = module {
+val navigationModule = module {
   val cicerone = Cicerone.create(Router())
 
   single { cicerone.navigatorHolder }

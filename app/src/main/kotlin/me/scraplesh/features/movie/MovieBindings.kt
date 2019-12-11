@@ -1,12 +1,12 @@
-package me.scraplesh.movies.features.movie
+package me.scraplesh.features.movie
 
 import androidx.lifecycle.LifecycleOwner
 import com.badoo.mvicore.android.AndroidBindings
 import com.badoo.mvicore.binder.using
-import me.scraplesh.movies.features.movie.MovieFeature.News
-import me.scraplesh.movies.features.movie.MovieFeature.Wish
-import me.scraplesh.movies.features.movie.MovieView.UiEvent
-import me.scraplesh.movies.features.movie.MovieView.ViewModel
+import me.scraplesh.features.movie.MovieFeature.News
+import me.scraplesh.features.movie.MovieFeature.Wish
+import me.scraplesh.features.movie.MovieView.UiEvent
+import me.scraplesh.features.movie.MovieView.ViewModel
 import me.scraplesh.movies.navigation.NavigationEvent
 import me.scraplesh.movies.navigation.RootCoordinator
 
@@ -28,7 +28,7 @@ class MovieBindings(
     binder.bind(feature to view using { state ->
       ViewModel(
           title = state.movie?.title.orEmpty(),
-          posterUrl = state.movie?.poster.orEmpty(),
+          posterUrl = state.movie?.posterUrl.orEmpty(),
           year = state.movie?.year.orEmpty(),
           rating = state.movie?.rating.orEmpty(),
           rated = state.movie?.rated.orEmpty(),

@@ -1,4 +1,4 @@
-package me.scraplesh.movies.features.movies
+package me.scraplesh.features.movies
 
 import android.os.Bundle
 import android.view.LayoutInflater

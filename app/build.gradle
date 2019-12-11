@@ -26,6 +26,7 @@ android {
 
             buildConfigField 'String', 'imdbApiUrl', "\"$imdbApiUrl\""
             buildConfigField 'String', 'defaultQuery', "\"warrior\""
+            buildConfigField 'String', 'database', "\"movies.db\""
         }
     }
 
@@ -57,5 +58,6 @@ dependencies {
     implementation rootProject.ext.dependencies.retrofit
     implementation rootProject.ext.dependencies.retrofitMoshi
     implementation rootProject.ext.dependencies.retrofitRxJava2
+    implementation rootProject.ext.dependencies.roomRuntime
     implementation rootProject.ext.dependencies.stetho
 }

@@ -1,4 +1,4 @@
-package me.scraplesh.movies.features.movies
+package me.scraplesh.features.movies
 
 import android.view.LayoutInflater
 import android.view.View
@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.fragment_movies.view.group_movies_error
 import kotlinx.android.synthetic.main.fragment_movies.view.recyclerview_movies
 import kotlinx.android.synthetic.main.fragment_movies.view.textview_movies_no_content
 import me.scraplesh.movies.core.MviCoreView
-import me.scraplesh.movies.domain.entities.BriefMovieEntity
+import me.scraplesh.movies.domain.entities.MovieEntity
 import kotlin.properties.Delegates
 
 class MoviesView(moviesAdapter: MoviesAdapter) :
@@ -23,11 +23,11 @@ class MoviesView(moviesAdapter: MoviesAdapter) :
 
   sealed class UiEvent {
     object Retry : UiEvent()
-    class MovieSelected(val movie: BriefMovieEntity) : UiEvent()
+    class MovieSelected(val movie: MovieEntity) : UiEvent()
   }
 
   class ViewModel(
-      val movies: List<BriefMovieEntity>,
+      val movies: List<MovieEntity>,
       val isLoading: Boolean,
       val noContent: Boolean,
       val error: Throwable?
