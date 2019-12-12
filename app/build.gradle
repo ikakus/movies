@@ -1,7 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
 apply from: 'features.gradle'
 
 android {
@@ -27,6 +26,7 @@ android {
 
             buildConfigField 'String', 'imdbApiUrl', "\"$imdbApiUrl\""
             buildConfigField 'String', 'defaultQuery', "\"warrior\""
+            buildConfigField 'String', 'database', "\"movies.db\""
         }
     }
 
@@ -44,21 +44,30 @@ dependencies {
     implementation project(':core')
     implementation project(':data')
     implementation project(':domain')
-    implementation project(':navigation')
     implementation project(':feature-movies')
     implementation project(':feature-movie')
 
     implementation rootProject.ext.dependencies.appcompatV7
     implementation rootProject.ext.dependencies.cicerone
-    implementation rootProject.ext.dependencies.dagger
-    implementation rootProject.ext.dependencies.daggerAndroid
-    implementation rootProject.ext.dependencies.daggerAndroidSupport
+    implementation rootProject.ext.dependencies.debugdrawerBase
+    implementation rootProject.ext.dependencies.debugdrawerCommons
+    implementation rootProject.ext.dependencies.debugdrawerLogs
+    implementation rootProject.ext.dependencies.koin
+    implementation rootProject.ext.dependencies.koinAndroid
+    implementation rootProject.ext.dependencies.koinScope
     implementation rootProject.ext.dependencies.kotlinStdlib
+    implementation rootProject.ext.dependencies.material
+    implementation rootProject.ext.dependencies.mvicore
+    implementation rootProject.ext.dependencies.mvicoreAndroid
     implementation rootProject.ext.dependencies.retrofit
     implementation rootProject.ext.dependencies.retrofitMoshi
     implementation rootProject.ext.dependencies.retrofitRxJava2
+    implementation rootProject.ext.dependencies.roomRuntime
     implementation rootProject.ext.dependencies.stetho
 
-    kapt rootProject.ext.dependencies.daggerCompiler
-    kapt rootProject.ext.dependencies.daggerAndroidProcessor
+    debugImplementation rootProject.ext.dependencies.chuck
+    debugImplementation rootProject.ext.dependencies.debugdrawer
+
+    releaseImplementation rootProject.ext.dependencies.chuckNoOp
+    releaseImplementation rootProject.ext.dependencies.debugdrawerNoOp
 }

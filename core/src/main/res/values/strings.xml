@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Module</string>
+    <string name="app_name">Movies</string>
     <string name="movies">Movies</string>
     <string name="nothing_found">Nothing found</string>
     <string name="retry">Retry</string>

@@ -2,23 +2,35 @@ package me.scraplesh.movies
 
 import android.app.Application
 import com.facebook.stetho.Stetho
-import me.scraplesh.movies.core.di.DaggerDomainComponent
-import me.scraplesh.movies.core.di.DomainComponent
-import me.scraplesh.movies.core.di.DomainModule
-import me.scraplesh.movies.core.di.HasDomainComponent
-import me.scraplesh.movies.di.AppComponent
-import me.scraplesh.movies.di.DaggerAppComponent
+import me.scraplesh.movies.di.movieModule
+import me.scraplesh.movies.di.moviesModule
+import me.scraplesh.movies.di.navigationModule
+import me.scraplesh.movies.di.networkModule
+import me.scraplesh.movies.di.persistenceModule
+import me.scraplesh.movies.di.repositoryModule
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
+import org.koin.core.context.startKoin
 
-class MoviesApp : Application(), HasDomainComponent {
-  val appComponent: AppComponent = DaggerAppComponent.builder().build()
-
-  override val domainComponent: DomainComponent = DaggerDomainComponent.builder()
-    .domainModule(DomainModule(appComponent.imdbWebApi()))
-    .build()
-
+class MoviesApp : Application() {
   override fun onCreate() {
     super.onCreate()
     setupStetho()
+
+    startKoin {
+      androidLogger()
+      androidContext(this@MoviesApp)
+      modules(
+        listOf(
+          networkModule,
+          persistenceModule,
+          repositoryModule,
+          navigationModule,
+          moviesModule,
+          movieModule
+        )
+      )
+    }
   }
 
   private fun setupStetho() {

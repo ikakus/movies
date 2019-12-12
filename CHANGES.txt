@@ -1,0 +1,13 @@
+2019.12.001
+-----------
+
+- Created application
+- Applied "Clean architecture"
+- Used single activity approach
+- Chose "Feature driven development"
+- Added two feature modules
+- Used MVI presentation pattern with the help of "MviCore" library
+- Added "Ciceron" for navigation purposes
+- Chose coordinators for navigation between features
+- Chose reactive programming with RxJava
+- Used "Koin" for dependency injection
