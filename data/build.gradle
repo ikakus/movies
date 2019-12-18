@@ -35,6 +35,9 @@ dependencies {
     implementation rootProject.ext.dependencies.roomRxJava2
     implementation rootProject.ext.dependencies.rxJava
 
+    testImplementation rootProject.ext.dependencies.junit
+    testImplementation rootProject.ext.dependencies.mockk
+
     kapt rootProject.ext.dependencies.moshiCodegen
     kapt rootProject.ext.dependencies.roomCompiler
 }

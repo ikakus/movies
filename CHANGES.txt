@@ -7,7 +7,7 @@
 - Chose "Feature driven development"
 - Added two feature modules
 - Used MVI presentation pattern with the help of "MviCore" library
-- Added "Ciceron" for navigation purposes
+- Added "Cicerone" for navigation purposes
 - Chose coordinators for navigation between features
 - Chose reactive programming with RxJava
 - Used "Koin" for dependency injection
