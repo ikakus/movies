@@ -37,4 +37,9 @@ class MainActivity : AppCompatActivity() {
     super.onResumeFragments()
     navigatorHolder.setNavigator(navigator)
   }
+
+  override fun onPause() {
+    super.onPause()
+    navigatorHolder.removeNavigator()
+  }
 }

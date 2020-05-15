@@ -2,8 +2,8 @@ package me.scraplesh.movies
 
 import android.app.Application
 import com.facebook.stetho.Stetho
-import me.scraplesh.movies.di.movieModule
-import me.scraplesh.movies.di.moviesModule
+import me.scraplesh.features.movie.movieModule
+import me.scraplesh.features.movies.moviesModule
 import me.scraplesh.movies.di.navigationModule
 import me.scraplesh.movies.di.networkModule
 import me.scraplesh.movies.di.persistenceModule

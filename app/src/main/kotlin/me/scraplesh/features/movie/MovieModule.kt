@@ -1,4 +1,4 @@
-package me.scraplesh.movies.di
+package me.scraplesh.features.movie
 
 import androidx.lifecycle.LifecycleOwner
 import com.badoo.mvicore.android.AndroidBindings
